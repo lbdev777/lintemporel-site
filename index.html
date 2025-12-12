@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>L’Intemporel – Salon de coiffure à Rimouski</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="L’Intemporel, salon de coiffure à Rimouski. Coloration, coupe femme et homme, balayage, soins et santé du cuir chevelu, sur rendez-vous seulement." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-bordeaux: #3b1515;
+      --bg-light: #f7f1e9;
+      --text-main: #2b2320;
+      --text-soft: #7a6b61;
+      --accent-gold: #e8d0a5;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* Layout */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(247, 241, 233, 0.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.45rem 0.4rem;
+      gap: 1.2rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 0;
+    }
+
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.85rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.1rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--bg-bordeaux);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--bg-bordeaux);
+      color: var(--accent-gold);
+      border-color: var(--bg-bordeaux);
+    }
+
+    .btn-primary:hover {
+      background: #2a0f0f;
+      border-color: #2a0f0f;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--bg-bordeaux);
+      border-color: rgba(59, 21, 21, 0.25);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--bg-bordeaux);
+      background: rgba(59, 21, 21, 0.04);
+    }
+
+    /* Hero */
+    .hero {
+      background: radial-gradient(circle at top, #5b2323 0, var(--bg-bordeaux) 55%, #1c0606 100%);
+      color: var(--accent-gold);
+      padding: 3.5rem 0 3.5rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.1rem, 3vw, 2.6rem);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      margin-top: 1rem;
+      max-width: 32rem;
+      color: #f6e9d3;
+    }
+
+    .hero-meta {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #f6e9d3;
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-right: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-cta {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .hero-note {
+      margin-top: 1rem;
+      font-size: 0.82rem;
+      color: #f3dfc0;
+    }
+
+    .hero-card {
+      background: rgba(10, 5, 5, 0.55);
+      border-radius: 20px;
+      padding: 1.6rem 1.4rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.9rem;
+    }
+
+    .hero-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-card ul {
+      list-style: none;
+      margin-top: 0.5rem;
+      padding-left: 0;
+    }
+
+    .hero-card li {
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+    }
+
+    .hero-card li::before {
+      content: "•";
+      font-size: 1.1rem;
+      line-height: 1;
+      margin-top: 0.1rem;
+    }
+
+    /* Sections & headings */
+    section { padding: 3.5rem 0; }
+
+    .section-header { margin-bottom: 2.2rem; }
+
+    .section-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.04em;
+    }
+
+    .section-description {
+      margin-top: 0.4rem;
+      max-width: 30rem;
+      font-size: 0.95rem;
+      color: var(--text-soft);
+    }
+
+    /* About */
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .about-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.05);
+      font-size: 0.95rem;
+    }
+
+    .about-card strong { font-weight: 600; }
+
+    /* Équipe */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .team-card {
+      background: var(--white);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 16px 32px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .team-photo {
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .team-body { padding: 1.3rem 1.4rem 1.4rem; }
+
+    .team-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .team-role {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .team-text { font-size: 0.9rem; color: var(--text-soft); }
+
+    .team-fun {
+      margin-top: 0.7rem;
+      font-size: 0.86rem;
+      font-style: italic;
+      color: #a18667;
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .service-card {
+      background: #fdf8f1;
+      border-radius: 18px;
+      padding: 1.4rem 1.3rem 1.5rem;
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .service-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .service-text { font-size: 0.9rem; color: var(--text-soft); }
+
+    /* Rendez-vous */
+    .booking {
+      background: #f0e5d6;
+      border-radius: 22px;
+      padding: 2rem 1.7rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .booking-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .booking-text {
+      font-size: 0.92rem;
+      color: var(--text-soft);
+      margin-bottom: 1.1rem;
+    }
+
+    .booking-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .booking-note { font-size: 0.8rem; color: var(--text-main); }
+
+    .booking-policies { font-size: 0.87rem; color: #5b4735; }
+
+    .booking-policies ul { margin-top: 0.4rem; padding-left: 1rem; }
+    .booking-policies li { margin-bottom: 0.25rem; }
+
+    /* Politiques */
+    .policies-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: start;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    .policy-block + .policy-block { margin-top: 1rem; }
+
+    .policy-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+      color: var(--text-main);
+    }
+
+    .season-banner {
+      background: #3b1515;
+      color: var(--accent-gold);
+      border-radius: 16px;
+      padding: 1.2rem 1.1rem;
+      font-size: 0.9rem;
+    }
+
+    .season-banner strong { display: block; margin-bottom: 0.25rem; }
+
+    /* Avis */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.6rem;
+    }
+
+    .review-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 1.4rem 1.3rem 1.4rem;
+      box-shadow: 0 16px 32px rgba(0,0,0,0.04);
+      font-size: 0.9rem;
+      position: relative;
+    }
+
+    .review-quote {
+      font-size: 2.4rem;
+      line-height: 0.7;
+      color: #e4c89c;
+      position: absolute;
+      top: 0.7rem;
+      left: 1rem;
+      opacity: 0.7;
+    }
+
+    .review-text { margin-top: 0.3rem; color: var(--text-soft); }
+    .review-author { margin-top: 0.7rem; font-weight: 500; font-size: 0.88rem; }
+    .review-meta { font-size: 0.8rem; color: #a18667; }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 2.2rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-item { margin-bottom: 0.5rem; }
+
+    .contact-item span {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 0.1rem;
+    }
+
+    /* Map container = moins goofy */
+    .map-wrap {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 0.85rem;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.06);
+    }
+
+    iframe.map {
+      border: 0;
+      width: 100%;
+      height: 280px;
+      border-radius: 14px;
+      display: block;
+    }
+
+    footer {
+      padding: 2rem 0 2.5rem;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    footer .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-inner, .split, .booking, .policies-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 2.6rem; }
+    }
+
+    @media (max-width: 780px) {
+      .nav-links { display: none; }
+      .nav-cta { margin-left: auto; }
+    }
+
+    /* ✅ MOBILE POLISH (header + hero + team + map) */
+    @media (max-width: 600px) {
+      section { padding: 2.8rem 0; }
+      .container { padding: 0 1rem; }
+
+      /* Header: clean + plus bas */
+      .nav { padding: 0.4rem 0; gap: 0.6rem; }
+      .nav-logo-text { display: none; }
+      .nav-logo img { height: 32px !important; }
+
+      .nav-cta { gap: 0.45rem; }
+      .btn { padding: 0.45rem 0.8rem; font-size: 0.78rem; }
+      .btn-outline { display: none; }
+
+      /* Hero: plus premium */
+      .hero { padding: 2.2rem 0; }
+      .hero-title { font-size: 1.7rem; letter-spacing: 0.12em; }
+      .hero-subtitle { font-size: 0.92rem; }
+      .hero-meta { font-size: 0.85rem; }
+      .hero-cta { margin-top: 1.4rem; }
+
+      .hero-card { padding: 1.25rem; font-size: 0.88rem; }
+
+      /* Team photos: un peu moins huge */
+      .team-photo { aspect-ratio: 16 / 15; }
+
+      /* Map: moins gros */
+      iframe.map { height: 220px; }
+      .map-wrap { padding: 0.7rem; }
+    }
+/* CTA principal – mobile first */
+.btn-hero-cta {
+  font-size: 1rem;
+  padding: 0.9rem 1.4rem;
+  font-weight: 600;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+
+/* Mobile : bouton full width + ultra visible */
+@media (max-width: 600px) {
+  .btn-hero-cta {
+    width: 100%;
+    justify-content: center;
+    font-size: 1.05rem;
+    padding: 1.1rem 1.4rem;
+    margin-top: 0.6rem;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="nav-logo">
+          <!-- ✅ si tes images sont à la racine -->
+          <img src="./logo-intemporel.png" alt="Logo L’Intemporel" style="height:40px; width:auto;">
+          <div class="nav-logo-text">L’INTEMPOREL · COIFFURE</div>
+        </div>
+
+        <nav class="nav-links">
+          <a href="#apropos">À propos</a>
+          <a href="#equipe">Équipe</a>
+          <a href="#services">Services</a>
+          <a href="#rendezvous">Rendez-vous</a>
+          <a href="#avis">Avis</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-cta">
+          <a href="#rendezvous" class="btn btn-primary btn-hero-cta">Demander un rendez-vous</a>
+          <a href="tel:14187326551" class="btn btn-primary">Appeler le salon</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="accueil">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div>
+            <h1 class="hero-title">L’INTEMPOREL COIFFURE</h1>
+            <p class="hero-subtitle">
+              Salon de coiffure chaleureux et moderne à Rimouski. Coloration, coupe femme et homme,
+              balayage, soins et santé du cuir chevelu, sur rendez-vous seulement.
+            </p>
+
+            <div class="hero-meta">
+              <span>📍 496, rue du Chanoine-Page, Rimouski</span>
+              <span>📞 <a href="tel:14187326551" style="color:inherit;">(418) 732-6551</a></span>
+            </div>
+
+            <div class="hero-cta">
+              <a href="#rendezvous" class="btn btn-primary">Demander un rendez-vous</a>
+              <a href="tel:14187326551" class="btn btn-outline">Appeler maintenant</a>
+            </div>
+
+            <p class="hero-note">
+              Chaque rendez-vous est planifié avec soin afin d’offrir une expérience calme, douce et
+              personnalisée.
+            </p>
+          </div>
+
+          <aside class="hero-card">
+            <div class="hero-card-title">Un salon pensé dans les moindres détails</div>
+            <p>
+              L’Intemporel est né de mois de travail, de doutes, de passion… et surtout de beaucoup d’amour.
+              Ouvert en juillet 2024, le salon a été créé pour offrir une expérience de coiffure
+              lumineuse dans un environnement apaisant.
+            </p>
+            <ul>
+              <li>Colorations et balayages sur mesure</li>
+              <li>Coupes femme & homme adaptées à votre quotidien</li>
+              <li>Soins ciblés et santé du cuir chevelu</li>
+              <li>Ambiance douce, sur rendez-vous seulement</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- À propos -->
+    <section id="apropos">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">À propos</div>
+          <h2 class="section-title">Un espace où chaque détail compte</h2>
+          <p class="section-description">
+            L’Intemporel est un salon où l’on prend le temps d’écouter, de conseiller et de créer des
+            résultats qui traversent les saisons.
+          </p>
+        </div>
+
+        <div class="split">
+          <div>
+            <p style="font-size:0.95rem; color:var(--text-soft);">
+              Derrière chaque détail du salon se cachent des mois de réflexion, de planification et
+              de travail. De l’aménagement à la sélection des produits, tout a été pensé pour offrir
+              une expérience chaleureuse, lumineuse et cohérente.
+            </p>
+            <p style="margin-top:1rem; font-size:0.95rem; color:var(--text-soft);">
+              Ici, on croit qu’une belle coiffure commence par une bonne discussion. Chaque rendez-vous
+              est l’occasion de comprendre vos besoins, votre routine et votre style de vie afin de
+              proposer des services adaptés.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <strong>Notre approche</strong>
+            <p style="margin-top:0.6rem;">
+              • Une écoute attentive et honnête<br>
+              • Des conseils personnalisés selon votre chevelure et vos habitudes<br>
+              • Des techniques actuelles, toujours apprises et raffinées<br>
+              • Un environnement calme, sur rendez-vous seulement
+            </p>
+            <p style="margin-top:0.9rem;">
+              Que ce soit pour une coloration en douceur, une coupe précise ou un soin du cuir
+              chevelu, l’équipe de l’Intemporel vise toujours le même objectif : vous faire
+              sentir bien, confiant·e et vous-même.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Équipe -->
+    <section id="equipe">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">L’équipe</div>
+          <h2 class="section-title">Des professionnelles passionnées</h2>
+          <p class="section-description">
+            Deux coiffeuses complémentaires, un même désir : offrir des résultats durables et une
+            expérience attentionnée.
+          </p>
+        </div>
+
+        <div class="team-grid">
+          <!-- Noémie -->
+          <article class="team-card">
+            <img src="./noemie.jpg" alt="Noémie, propriétaire du salon L’Intemporel" class="team-photo">
+            <div class="team-body">
+              <h3 class="team-name">Noémie</h3>
+              <div class="team-role">Propriétaire & coiffeuse</div>
+              <p class="team-text">
+                Coiffeuse depuis 5 ans, Noémie est une touche-à-tout passionnée. Elle aime autant les
+                colorations que les techniques de mèches, et la coupe pour homme reste son grand dada.
+              </p>
+              <p class="team-text" style="margin-top:0.6rem;">
+                Son objectif : que chaque personne qui passe au salon reparte confiante, bien dans
+                ses cheveux et dans son image.
+              </p>
+              <p class="team-fun">Pour lui faire plaisir, un bon cappuccino glacé fonctionne à tout coup. ☕️</p>
+            </div>
+          </article>
+
+          <!-- Ann-Julie -->
+          <article class="team-card">
+            <img src="./ann-julie.jpg" alt="Ann-Julie, coiffeuse au salon L’Intemporel" class="team-photo">
+            <div class="team-body">
+              <h3 class="team-name">Ann-Julie</h3>
+              <div class="team-role">Coiffeuse</div>
+              <p class="team-text">
+                Diplômée depuis décembre, Ann-Julie aime particulièrement les colorations et les traitements.
+                Elle souhaite se spécialiser en santé du cuir chevelu : de beaux projets s’en viennent.
+              </p>
+              <p class="team-text" style="margin-top:0.6rem;">
+                Douce, minutieuse et à l’écoute, elle prend le temps de comprendre vos besoins.
+              </p>
+              <p class="team-fun">Elle n’aime pas le café… mais le chocolat la rend toujours bien heureuse. 🍫</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Services</div>
+          <h2 class="section-title">Ce que nous offrons</h2>
+          <p class="section-description">
+            Des services adaptés à votre réalité, qu’il s’agisse d’un entretien régulier ou d’une transformation complète.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <h3 class="service-title">Coloration</h3>
+            <p class="service-text">
+              Coloration complète, retouches de racines ou gloss subtil : des nuances choisies pour flatter votre teint
+              et respecter la santé de vos cheveux.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <h3 class="service-title">Balayage & mèches</h3>
+            <p class="service-text">
+              Effets lumineux, dimension et douceur. Des résultats naturels ou plus marqués, toujours adaptés à vos envies.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <h3 class="service-title">Coupes femme & homme</h3>
+            <p class="service-text">
+              Coupes modernes ou classiques, pensées pour votre morphologie, votre type de cheveu et votre routine quotidienne.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <h3 class="service-title">Mise en plis & coiffure</h3>
+            <p class="service-text">
+              Mise en plis, coiffure pour un événement, un bal ou un moment spécial.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <h3 class="service-title">Soins & cuir chevelu</h3>
+            <p class="service-text">
+              Traitements nourrissants, réparateurs et soins ciblés pour le cuir chevelu selon vos besoins.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <h3 class="service-title">Accompagnement personnalisé</h3>
+            <p class="service-text">
+              Conseils honnêtes sur l’entretien à la maison, les produits adaptés et le rythme idéal de vos visites.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rendez-vous -->
+    <section id="rendezvous">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Rendez-vous</div>
+          <h2 class="section-title">Sur rendez-vous seulement</h2>
+          <p class="section-description">
+            Deux façons simples de réserver : une demande en ligne ou un appel direct au salon.
+          </p>
+        </div>
+
+        <div class="booking">
+          <div>
+            <h3 class="booking-title">Demander un rendez-vous</h3>
+            <p class="booking-text">
+              Remplissez une courte demande en ligne et nous vous contacterons pour confirmer la date
+              et l’heure exactes. Votre rendez-vous n’est confirmé qu’une fois notre réponse reçue.
+            </p>
+
+            <div class="booking-actions">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfv2I-zcUiKNpOcOIzWXfcVkX8-ibhFT6LXXgqU4mm8v-wQWw/viewform"
+                 target="_blank" rel="noopener" class="btn btn-primary">
+                Demande de rendez-vous en ligne
+              </a>
+              <a href="tel:14187326551" class="btn btn-outline">Appeler le salon</a>
+            </div>
+
+            <p class="booking-note">
+              Pour toute question particulière (coloration complexe, correction, projet cheveux à long terme),
+              n’hésitez pas à laisser des précisions dans votre message ou à en discuter directement au téléphone.
+            </p>
+          </div>
+
+          <div class="booking-policies">
+            <h4 style="font-family:'Playfair Display',serif; font-size:1rem; margin-bottom:0.4rem;">À garder en tête</h4>
+            <ul>
+              <li>Toute modification ou annulation doit être faite au minimum 48 h à l’avance.</li>
+              <li>Un retard important peut entraîner l’annulation automatique du rendez-vous.</li>
+              <li>Nous demandons à la clientèle de venir seule à son rendez-vous, sauf exception discutée.</li>
+              <li>En période très achalandée (temps des Fêtes, etc.), des frais d’annulation peuvent s’appliquer.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Politiques -->
+    <section id="politiques">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Politiques</div>
+          <h2 class="section-title">Pour une expérience fluide pour tous</h2>
+          <p class="section-description">
+            Ces quelques règles nous permettent de respecter le temps de chacun et d’offrir un service constant.
+          </p>
+        </div>
+
+        <div class="policies-grid">
+          <div>
+            <div class="policy-block">
+              <h3>Ponctualité</h3>
+              <p>Chaque rendez-vous est planifié avec soin. Un retard important peut entraîner l’annulation automatique.</p>
+            </div>
+
+            <div class="policy-block">
+              <h3>Annulation & modifications</h3>
+              <p>Toute annulation ou modification doit être faite au minimum <strong>48 heures à l’avance</strong>.</p>
+            </div>
+
+            <div class="policy-block">
+              <h3>Venir seul·e</h3>
+              <p>Le salon est un espace calme. Merci de venir seul·e, sauf entente préalable.</p>
+            </div>
+          </div>
+
+          <aside class="season-banner">
+            <strong>Le temps des Fêtes au salon ✨🎄</strong>
+            <p>La période des Fêtes est particulièrement achalandée. Pour que chacun profite pleinement :</p>
+            <ul style="margin-top:0.5rem; padding-left:1.1rem;">
+              <li>Aucun retard ne pourra être accepté.</li>
+              <li>Merci de venir seul·e à votre rendez-vous.</li>
+              <li>Annulation/modif : 48 h à l’avance.</li>
+            </ul>
+            <p style="margin-top:0.7rem;">Surveillez les disponibilités restantes avec Ann-Julie et Noémie. ✨</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Avis -->
+    <section id="avis">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Avis</div>
+          <h2 class="section-title">Ce que la clientèle en dit</h2>
+          <p class="section-description">Quelques commentaires reçus de notre précieuse clientèle.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-quote">“</div>
+            <p class="review-text">
+              « Première visite à l’Intemporel et certainement pas la dernière. L’ambiance est super calme,
+              Noémie a vraiment pris le temps de m’écouter. Je suis ressortie avec exactement le blond que je voulais. »
+            </p>
+            <p class="review-author">Marie-Ève G.</p>
+            <p class="review-meta">Avis Facebook</p>
+          </article>
+
+          <article class="review-card">
+            <div class="review-quote">“</div>
+            <p class="review-text">
+              « Ann-Julie a fait un soin et une coupe sur mes cheveux très abîmés et la différence est incroyable.
+              On se sent zéro pressée, tout est doux et organisé. Vraiment un beau coup de cœur. »
+            </p>
+            <p class="review-author">Amélie L.</p>
+            <p class="review-meta">Message Instagram</p>
+          </article>
+
+          <article class="review-card">
+            <div class="review-quote">“</div>
+            <p class="review-text">
+              « Excellent service, autant pour la coupe homme que pour les conseils d’entretien.
+              On voit que les filles sont passionnées et qu’elles veulent que ça fonctionne pour notre réalité de tous les jours. »
+            </p>
+            <p class="review-author">Simon D.</p>
+            <p class="review-meta">Commentaire en ligne</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Contact</div>
+          <h2 class="section-title">Nous joindre</h2>
+          <p class="section-description">
+            Pour toute question sur les services, les disponibilités ou les produits, n’hésitez pas à nous écrire ou nous appeler.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-block">
+            <div class="contact-item">
+              <span>Adresse</span>
+              496, rue du Chanoine-Page<br>
+              Rimouski (Québec)
+            </div>
+            <div class="contact-item">
+              <span>Téléphone</span>
+              <a href="tel:14187326551">(418) 732-6551</a>
+            </div>
+            <div class="contact-item">
+              <span>Rendez-vous</span>
+              Sur rendez-vous seulement, par téléphone ou demande en ligne.
+            </div>
+            <div class="contact-item">
+              <span>Réseaux sociaux</span>
+              <a href="https://www.facebook.com/profile.php?id=61577204100898" target="_blank" rel="noopener">Facebook</a> ·
+              <a href="https://www.instagram.com/salon.lintemporel/" target="_blank" rel="noopener">Instagram</a>
+            </div>
+          </div>
+
+          <div class="contact-block">
+            <h3>Localisation</h3>
+            <div class="map-wrap">
+              <iframe
+                class="map"
+                src="https://www.google.com/maps?q=496+rue+du+Chanoine-Page,+Rimouski,+QC&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Carte - L'Intemporel Rimouski"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>© L’Intemporel – Coiffure, Rimouski. Tous droits réservés.</div>
+        <div>Conception web&nbsp;: Louis Beaulieu (Louis Dev).</div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
